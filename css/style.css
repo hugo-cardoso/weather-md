@@ -1,0 +1,65 @@
+body{
+		font-family: 'Roboto', sans-serif;
+		height: 100vh;
+		background-color: #ECEFF1;
+	}
+
+	.hero{
+		width: 100%; 
+		height: 400px; 
+	}
+
+	.hero h1{
+		color: #FFF;
+		font-size: 50px;
+	}
+	.hero p{
+		color: #FFF;
+	}
+
+	.dia{
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#81d4fa+0,039be5+100 */
+		background: rgb(129,212,250); /* Old browsers */
+		background: -moz-linear-gradient(top,  rgba(129,212,250,1) 0%, rgba(3,155,229,1) 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top,  rgba(129,212,250,1) 0%,rgba(3,155,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom,  rgba(129,212,250,1) 0%,rgba(3,155,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#81d4fa', endColorstr='#039be5',GradientType=0 ); /* IE6-9 */
+
+	}
+
+	.noite{
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1565c0+0,1565c0+32,1565c0+47,0d47a1+100 */
+		background: rgb(21,101,192); /* Old browsers */
+		background: -moz-linear-gradient(top,  rgba(21,101,192,1) 0%, rgba(21,101,192,1) 32%, rgba(21,101,192,1) 47%, rgba(13,71,161,1) 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top,  rgba(21,101,192,1) 0%,rgba(21,101,192,1) 32%,rgba(21,101,192,1) 47%,rgba(13,71,161,1) 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom,  rgba(21,101,192,1) 0%,rgba(21,101,192,1) 32%,rgba(21,101,192,1) 47%,rgba(13,71,161,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1565c0', endColorstr='#0d47a1',GradientType=0 ); /* IE6-9 */
+
+	}
+	
+	h1, h2, h3{
+		margin: 0px;
+	}
+
+	.painel-other{
+		border-radius: 4px;
+		padding: 10px 10px;
+		background-color: #FFF;
+		margin-top: 15px;
+		-webkit-box-shadow: 0px 3px 13px 0px rgba(0,0,0,0.1);
+		-moz-box-shadow: 0px 3px 13px 0px rgba(0,0,0,0.1);
+		box-shadow: 0px 3px 13px 0px rgba(0,0,0,0.1);
+	}
+
+	.painel-other > .day{
+		font-weight: bold;
+	}
+
+	.painel-other > img{
+		margin: 10px 0px;
+	}
+
+	.painel-other  p{
+		margin-bottom: 10px;
+		color: grey;
+	}

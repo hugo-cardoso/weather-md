@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="http://cdn.materialdesignicons.com/1.7.22/css/materialdesignicons.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Projeto Edinei[2]</title>
+</head>
+<body ng-controller="appController" ng-init="datas = ''">
+
+	<div class="hero" ng-class="{dia: hora < 18, noite: hora > 18}">
+
+		<div ng-show="datas">
+
+			<div style="height: 350px; width: 100%; display: flex;">
+
+				<div style="margin: auto; text-align: center;">
+					<h1>{{datas.item.forecast[0].day | semana}}, São Paulo-SP</h1>
+					<img ng-src="res/{{datas.item.condition.text | miniaturas}}_128.png">
+					<h1>{{datas.item.condition.temp}}°C</h1>
+					<p>{{datas.item.condition.text | descricao}}</p>
+				</div>
+
+			</div>
+
+			<div style="height: 50px;">
+				<div class="col-md-6 col-xs-6" style="line-height: 50px; text-align: center; color: #FFF;">
+					<i class="mdi mdi-water"></i>
+					{{datas.atmosphere.humidity}}%
+				</div>
+				<div class="col-md-6 col-xs-6" style="line-height: 50px; text-align: center; color: #FFF;">
+					<i class="mdi mdi-weather-windy"></i>
+					{{datas.wind.speed}} km/h
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="container" ng-show="datas">
+
+		<div class="col-md-3 col-sm-3 col-xs-6">
+
+			<div class="painel-other" align="center">
+
+				<div class="day">{{datas.item.forecast[1].day | semana}}</div>
+
+				<img ng-src="res/{{datas.item.forecast[1].text | miniaturas}}.png">
+
+				<div>
+					<p>{{datas.item.forecast[1].text | descricao}}</p>
+					<strong>{{datas.item.forecast[1].high}}</strong>/{{datas.item.forecast[1].low}} °C
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="col-md-3 col-sm-3 col-xs-6">
+
+			<div class="painel-other" align="center">
+
+				<div class="day">{{datas.item.forecast[2].day | semana}}</div>
+
+				<img ng-src="res/{{datas.item.forecast[2].text | miniaturas}}.png">
+
+				<div>
+					<p>{{datas.item.forecast[2].text | descricao}}</p>
+					<strong>{{datas.item.forecast[2].high}}</strong>/{{datas.item.forecast[2].low}} °C
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="col-md-3 col-sm-3 col-xs-6">
+
+			<div class="painel-other" align="center">
+
+				<div class="day">{{datas.item.forecast[3].day | semana}}</div>
+
+				<img ng-src="res/{{datas.item.forecast[3].text | miniaturas}}.png">
+
+				<div>
+					<p>{{datas.item.forecast[3].text | descricao}}</p>
+					<strong>{{datas.item.forecast[3].high}}</strong>/{{datas.item.forecast[3].low}} °C
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="col-md-3 col-sm-3 col-xs-6">
+
+			<div class="painel-other" align="center">
+
+				<div class="day">{{datas.item.forecast[4].day | semana}}</div>
+
+				<img ng-src="res/{{datas.item.forecast[4].text | miniaturas}}.png">
+
+				<div>
+					<p>{{datas.item.forecast[4].text | descricao}}</p>
+					<strong>{{datas.item.forecast[4].high}}</strong>/{{datas.item.forecast[4].low}} °C
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div style="text-align: center; color: grey; margin-top: 15px;">
+		<span>Developed by </span><a href="#">Hugo Cardoso</a>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.0/angular.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
