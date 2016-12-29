@@ -12,7 +12,7 @@
 </head>
 <body ng-controller="appController">
 
-	<div class="hero animated fadeIn" ng-class="{dia: hora < 18, noite: hora > 18}">
+	<div class="hero animated fadeIn" ng-class="{dia: hora <= 18, noite: hora > 18}">
 
 		<div style="height: 100%; width: 100%; display: flex;" ng-hide="datas">
 			
