@@ -4,21 +4,31 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="https://cdn.materialdesignicons.com/1.7.22/css/materialdesignicons.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title>Projeto Edinei[2]</title>
 </head>
 <body ng-controller="appController">
 
-	<div class="hero" ng-class="{dia: hora < 18, noite: hora > 18}">
+	<div class="hero animated fadeIn" ng-class="{dia: hora < 18, noite: hora > 18}">
 
-		<div ng-show="datas">
+		<div style="height: 100%; width: 100%; display: flex;" ng-hide="datas">
+			
+			<div style="margin: auto; text-align: center;">
+				<div class="md-preloader"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="50" width="50" viewbox="0 0 75 75"><circle cx="37.5" cy="37.5" r="33.5" stroke-width="8"/></svg></div>
+				<p>Carregando...</p>
+			</div>
+
+		</div>
+
+		<div ng-show="datas" class="animated fadeIn">
 
 			<div style="height: 350px; width: 100%; display: flex;">
 
 				<div style="margin: auto; text-align: center;">
-					<h1>{{datas.item.forecast[0].day | semana}}, São Paulo-SP</h1>
+					<h1 class="data">{{datas.item.forecast[0].day | semana}}, São Paulo-SP</h1>
 					<img ng-src="res/{{datas.item.condition.text | miniaturas}}_128.png">
 					<h1>{{datas.item.condition.temp}}°C</h1>
 					<p>{{datas.item.condition.text | descricao}}</p>
@@ -45,7 +55,7 @@
 
 		<div class="col-md-3 col-sm-3 col-xs-12">
 
-			<div class="painel-other" align="center">
+			<div class="painel-other animated bounceInLeft" align="center">
 
 				<div class="day">{{datas.item.forecast[1].day | semana}}</div>
 
@@ -62,7 +72,7 @@
 
 		<div class="col-md-3 col-sm-3 col-xs-12">
 
-			<div class="painel-other" align="center">
+			<div class="painel-other animated bounceInLeft" align="center">
 
 				<div class="day">{{datas.item.forecast[2].day | semana}}</div>
 
@@ -79,7 +89,7 @@
 
 		<div class="col-md-3 col-sm-3 col-xs-12">
 
-			<div class="painel-other" align="center">
+			<div class="painel-other animated bounceInLeft" align="center">
 
 				<div class="day">{{datas.item.forecast[3].day | semana}}</div>
 
@@ -96,7 +106,7 @@
 
 		<div class="col-md-3 col-sm-3 col-xs-12">
 
-			<div class="painel-other" align="center">
+			<div class="painel-other animated bounceInLeft" align="center">
 
 				<div class="day">{{datas.item.forecast[4].day | semana}}</div>
 
@@ -113,7 +123,7 @@
 
 	</div>
 
-	<div style="text-align: center; color: grey; margin-top: 15px;">
+	<div style="text-align: center; color: grey; margin-bottom: 15px;">
 		<span>Developed by </span><a href="#">Hugo Cardoso</a>
 	</div>
 
