@@ -194,11 +194,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#81d4fa', end
 
 			$scope.hora = $filter('date')(data, "H");
 
+			/*
 			$http.get("https://api.hgbrasil.com/weather/?format=json&cid=BRXX0232")
 			.then(function(response){
 				$scope.datas = response.data.results;
 				console.log($scope.datas);
 			});
+			*/
+			
+			$http({
+				method : "JSONP",
+				url : "https://api.hgbrasil.com/weather/?format=json&cid=BRXX0232"
+			    }).then(function mySucces(response) {
+				$scope.datas = response.data;
+			    }, function myError(response) {
+				alert("erro");
+			    });
 
 		});
 
