@@ -31,9 +31,9 @@ body{
 .noite{
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1565c0+0,1565c0+32,1565c0+47,0d47a1+100 */
 	background: rgb(21,101,192); /* Old browsers */
-	background: -moz-linear-gradient(top,  rgba(21,101,192,1) 0%, rgba(21,101,192,1) 32%, rgba(21,101,192,1) 47%, rgba(13,71,161,1) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top,  rgba(21,101,192,1) 0%,rgba(21,101,192,1) 32%,rgba(21,101,192,1) 47%,rgba(13,71,161,1) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom,  rgba(21,101,192,1) 0%,rgba(21,101,192,1) 32%,rgba(21,101,192,1) 47%,rgba(13,71,161,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	background: -moz-linear-gradient(top,  rgba(3,155,229,1) 0%,, rgba(13,71,161,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(3,155,229,1) 0%,rgba(13,71,161,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(3,155,229,1) 0%,rgba(13,71,161,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1565c0', endColorstr='#0d47a1',GradientType=0 ); /* IE6-9 */
 
 }
