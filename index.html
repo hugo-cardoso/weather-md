@@ -23,15 +23,16 @@
 
 		</div>
 
-		<div ng-show="datas" class="animated fadeIn">
+		<div ng-show="forecast" class="animated fadeIn">
 
 			<div style="height: 350px; width: 100%; display: flex;">
 
 				<div style="margin: auto; text-align: center;">
-					<h1 class="data">{{datas.item.forecast[0].day | semana}}, São Paulo-SP</h1>
-					<img ng-src="res/{{datas.item.condition.text | miniaturas}}_128.png">
-					<h1>{{datas.item.condition.temp}}°C</h1>
-					<p>{{datas.item.condition.text | descricao}}</p>
+					<p>{{data | date: 'EEE' | semana}}, {{data | date: 'd'}} de {{data | date: 'MMMM' | meses}} de {{data | date: 'yyyy'}}</p>
+					<h1 class="data">São Paulo, SP</h1>
+					<img ng-src="res/{{datas.weather[0].description | miniaturas}}_128.png">
+					<h1>{{datas.main.temp | limitTo: 2 }}°C</h1>
+					<p>{{datas.weather[0].description | descricao}}</p>
 				</div>
 
 			</div>
@@ -39,7 +40,7 @@
 			<div style="height: 50px;">
 				<div class="col-md-6 col-xs-6" style="line-height: 50px; text-align: center; color: #FFF;">
 					<i class="mdi mdi-water"></i>
-					{{datas.atmosphere.humidity}}%
+					{{datas.main.humidity}}%
 				</div>
 				<div class="col-md-6 col-xs-6" style="line-height: 50px; text-align: center; color: #FFF;">
 					<i class="mdi mdi-weather-windy"></i>
@@ -53,68 +54,18 @@
 
 	<div class="container" ng-show="datas">
 
-		<div class="col-md-3 col-sm-3 col-xs-12">
+		<div class="col-md-3 col-sm-3 col-xs-12" ng-repeat="data in forecast.list | limitTo: 4">
 
 			<div class="painel-other animated bounceInLeft" align="center">
 
-				<div class="day">{{datas.item.forecast[1].day | semana}}</div>
+				<div class="day">{{data.dt | timestamp | semana}}</div>
 
-				<img ng-src="res/{{datas.item.forecast[1].text | miniaturas}}.png">
-
-				<div>
-					<p>{{datas.item.forecast[1].text | descricao}}</p>
-					<strong>{{datas.item.forecast[1].high}}</strong>/{{datas.item.forecast[1].low}} °C
-				</div>
-
-			</div>
-
-		</div>
-
-		<div class="col-md-3 col-sm-3 col-xs-12">
-
-			<div class="painel-other animated bounceInLeft" align="center">
-
-				<div class="day">{{datas.item.forecast[2].day | semana}}</div>
-
-				<img ng-src="res/{{datas.item.forecast[2].text | miniaturas}}.png">
+				<img ng-src="res/{{data.weather[0].main | miniaturas}}_96.png">
 
 				<div>
-					<p>{{datas.item.forecast[2].text | descricao}}</p>
-					<strong>{{datas.item.forecast[2].high}}</strong>/{{datas.item.forecast[2].low}} °C
-				</div>
-
-			</div>
-
-		</div>
-
-		<div class="col-md-3 col-sm-3 col-xs-12">
-
-			<div class="painel-other animated bounceInLeft" align="center">
-
-				<div class="day">{{datas.item.forecast[3].day | semana}}</div>
-
-				<img ng-src="res/{{datas.item.forecast[3].text | miniaturas}}.png">
-
-				<div>
-					<p>{{datas.item.forecast[3].text | descricao}}</p>
-					<strong>{{datas.item.forecast[3].high}}</strong>/{{datas.item.forecast[3].low}} °C
-				</div>
-
-			</div>
-
-		</div>
-
-		<div class="col-md-3 col-sm-3 col-xs-12">
-
-			<div class="painel-other animated bounceInLeft" align="center">
-
-				<div class="day">{{datas.item.forecast[4].day | semana}}</div>
-
-				<img ng-src="res/{{datas.item.forecast[4].text | miniaturas}}.png">
-
-				<div>
-					<p>{{datas.item.forecast[4].text | descricao}}</p>
-					<strong>{{datas.item.forecast[4].high}}</strong>/{{datas.item.forecast[4].low}} °C
+					<p>{{data.weather[0].main | descricao}}</p>
+					<span style="margin-right: 10px;"><i class="mdi mdi-arrow-up-bold" style="color: #03A9F4;"></i><strong>{{data.temp.max | limitTo: 2}}</strong> °C</span>
+					<span><i class="mdi mdi-arrow-down-bold" style="color: #F44336;"></i><strong>{{data.temp.min | limitTo: 2}}</strong> °C</span>
 				</div>
 
 			</div>
