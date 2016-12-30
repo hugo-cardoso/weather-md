@@ -7,13 +7,13 @@ app.controller('appController', function($scope, $http, $filter, $rootScope) {
 	$scope.data = new Date();
 	$scope.hora = $filter('date')(data, "H");
 
-	$http.get("//api.openweathermap.org/data/2.5/weather?id=7521912&units=metric&APPID=f68c6a64ebac04e1d9202b62e626127d")
+	$http.get("http://api.openweathermap.org/data/2.5/weather?id=7521912&units=metric&APPID=f68c6a64ebac04e1d9202b62e626127d")
 	.then(function(response){
 		console.log(response.data);
 		$scope.datas = response.data;
 	});
 
-	$http.get("//api.openweathermap.org/data/2.5/forecast/daily?id=7521912&units=metric&cnt=4&APPID=f68c6a64ebac04e1d9202b62e626127d")
+	$http.get("http://api.openweathermap.org/data/2.5/forecast/daily?id=7521912&units=metric&cnt=4&APPID=f68c6a64ebac04e1d9202b62e626127d")
 	.then(function(response){
 		$scope.forecast = response.data;
 		console.log(response.data);
