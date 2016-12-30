@@ -12,7 +12,7 @@ app.controller('appController', function($scope, $http, $filter, $rootScope) {
 		url: 'https://api.darksky.net/forecast/2bc28a61c75680417d0d7dadec7ab9d7/37.8267,-122.4233'
 	}).then(function successCallback(response) {
 
-		$scope.datas = response.data;
+		$scope.datas = response;
 		console.log($scope.datas);
 
 	}, function errorCallback(response) {
