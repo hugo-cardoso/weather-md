@@ -2,19 +2,21 @@ var app = angular.module('app', []);
 
 app.controller('appController', function($scope, $http, $filter, $rootScope) {
 
-	$scope.datas = '';
-
 	var data = new Date();
 
+	$scope.data = new Date();
 	$scope.hora = $filter('date')(data, "H");
 
-	$http.get("https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='são paulo, sp') and u = 'c'&format=json")
+	$http.get("http://api.openweathermap.org/data/2.5/weather?id=7521912&units=metric&APPID=f68c6a64ebac04e1d9202b62e626127d")
 	.then(function(response){
-		$scope.datas = response.data.query.results.channel;
-		alert("ok");
-		$scope.$apply;
-	}, function myError(response) {
-		alert(response.statusText);
+		console.log(response.data);
+		$scope.datas = response.data;
+	});
+
+	$http.get("http://api.openweathermap.org/data/2.5/forecast/daily?id=7521912&units=metric&cnt=4&APPID=f68c6a64ebac04e1d9202b62e626127d")
+	.then(function(response){
+		$scope.forecast = response.data;
+		console.log(response.data);
 	});
 
 });
@@ -22,18 +24,23 @@ app.controller('appController', function($scope, $http, $filter, $rootScope) {
 
 app.filter('miniaturas', function() {
 
-	return function(x){
+	return function(y){
 
-		if(x === "cloudly_day"){
-			return "partly_cloudy";
-		}
-		if(x === "Scattered Thunderstorms" || x === "Thunderstorms"){
+		var x = y.toLowerCase();
+
+		if(x === "thunderstorm"){
 			return "thunderstorms";
 		}
-		if(x === "Mostly Cloudy"){
-			return "cloudy";
+		if(x === "rain"){
+			return "rain";
 		}
-		if(x === "clear_day"){
+		if(x === "shower rain"){
+			return "rain_s_cloudy";
+		}
+		if(x === "few clouds" || x === "scattered clouds" || x === "broken clouds"){
+			return "partly_cloudy";
+		}
+		if(x === "clear sky"){
 			return "sunny";
 		}
 
@@ -72,17 +79,86 @@ app.filter('semana', function(){
 
 app.filter('descricao', function(){
 
+	return function(y){
+
+		var x = y.toLowerCase();
+
+		if(x === "thunderstorm"){
+			return "Tempestade";
+		}
+		if(x === "rain"){
+			return "Chuva";
+		}
+		if(x === "Chuva com neblina"){
+			return "rain_s_cloudy";
+		}
+		if(x === "few clouds" || x === "scattered clouds" || x === "broken clouds"){
+			return "Parcialmente núblado";
+		}
+		if(x === "clear sky"){
+			return "Limpo";
+		}
+
+	}
+
+});
+
+app.filter('meses', function(){
+
 	return function(x){
 
-		if(x === "Mostly Cloudy"){
-			return "Nublado"
+		if(x === "January"){
+			return "Janeiro"
 		}
-		if(x === "Scattered Thunderstorms"){
-			return "Chuva com trovoadas"
+		if(x === "February"){
+			return "Fevereiro"
 		}
-		if(x === "Thunderstorms"){
-			return "Tempestade"
+		if(x === "March"){
+			return "Março"
 		}
+		if(x === "April"){
+			return "Abril"
+		}
+		if(x === "May"){
+			return "Maio"
+		}
+		if(x === "June"){
+			return "Junho"
+		}
+		if(x === "July"){
+			return "Julho"
+		}
+		if(x === "August"){
+			return "Agosto"
+		}
+		if(x === "September"){
+			return "Setembro"
+		}
+		if(x === "October"){
+			return "Outubro"
+		}
+		if(x === "November"){
+			return "Novembro"
+		}
+		if(x === "December"){
+			return "Dezembro"
+		}
+
+	}
+
+});
+
+app.filter('timestamp', function(){
+
+	return function(x){
+
+		var timestamp = x;
+		var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+		var date = new Date(timestamp * 1000);
+		var datevalues = ('0' + date.getDate()).slice(-2) + '/' + ('0' + (date.getMonth() + 1)).slice(-2);
+		var semana = days[date.getDay()].substring(0,3);
+
+		return semana;
 
 	}
 
