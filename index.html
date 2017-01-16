@@ -23,29 +23,30 @@
 
 		</div>
 
-		<div ng-show="forecast" class="animated fadeIn">
+		<div ng-show="datas" class="animated fadeIn" style="height: 100%;">
 
-			<div style="height: 350px; width: 100%; display: flex;">
+			<div style="height: 100%; padding-bottom: 50px; width: 100%; display: flex;">
 
-				<div style="margin: auto; text-align: center;">
-					<p>{{data | date: 'EEE' | semana}}, {{data | date: 'd'}} de {{data | date: 'MMMM' | meses}} de {{data | date: 'yyyy'}}</p>
-					<h1 class="data">São Paulo, SP</h1>
+				<div style="margin: auto; width: 100%; text-align: center;">
+					<p class="data">{{data | date: 'EEE' | semana}}, {{data | date: 'd'}} de {{data | date: 'MMMM' | meses}} de {{data | date: 'yyyy'}}</p>
+					<h1 class="local">{{datas.name}}</h1>
 					<img ng-src="res/{{datas.weather[0].description | miniaturas}}_128.png">
-					<h1>{{datas.main.temp | limitTo: 2 }}°C</h1>
+					<h1 class="temp">{{datas.main.temp | limitTo: 2 }}°C</h1>
 					<p>{{datas.weather[0].description | descricao}}</p>
+
+					<div style="height: 50px; position: absolute; bottom: 0px; left: 0px; width: 100%;">
+						<div class="col-md-6 col-xs-6" style="line-height: 50px; text-align: center; color: #FFF;">
+							<i class="mdi mdi-water"></i>
+							{{datas.main.humidity}}%
+						</div>
+						<div class="col-md-6 col-xs-6" style="line-height: 50px; text-align: center; color: #FFF;">
+							<i class="mdi mdi-weather-windy"></i>
+							{{datas.wind.speed}} km/h
+						</div>
+					</div>
+
 				</div>
 
-			</div>
-
-			<div style="height: 50px;">
-				<div class="col-md-6 col-xs-6" style="line-height: 50px; text-align: center; color: #FFF;">
-					<i class="mdi mdi-water"></i>
-					{{datas.main.humidity}}%
-				</div>
-				<div class="col-md-6 col-xs-6" style="line-height: 50px; text-align: center; color: #FFF;">
-					<i class="mdi mdi-weather-windy"></i>
-					{{datas.wind.speed}} km/h
-				</div>
 			</div>
 
 		</div>

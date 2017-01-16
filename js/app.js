@@ -7,19 +7,55 @@ app.controller('appController', function($scope, $http, $filter, $rootScope) {
 	$scope.data = new Date();
 	$scope.hora = $filter('date')(data, "H");
 
-	$http({
-		method: 'GET',
-		url: 'https://api.darksky.net/forecast/2bc28a61c75680417d0d7dadec7ab9d7/37.8267,-122.4233'
-	}).then(function successCallback(response) {
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(position){
+			$scope.$apply(function(){
+				$scope.position = position.coords;
+				console.log(position.coords);
+				$scope.getData();
+			});
+		});
+	}
 
-		$scope.datas = response;
-		console.log($scope.datas);
+	$scope.getData = function(){
 
-	}, function errorCallback(response) {
+		// Atual
+		$http({
+			method: 'GET',
+			url: 'http://api.openweathermap.org/data/2.5/weather?lat=' + $scope.position.latitude + '&lon=' + $scope.position.longitude + '&units=metric&APPID=f68c6a64ebac04e1d9202b62e626127d'
+		}).then(function successCallback(response) {
 
-		console.log(response);
+			$scope.datas = response.data;
+			console.log(response.data);
 
-	});
+		}, function errorCallback(response) {
+
+			console.log(response);
+
+		});
+
+		// 5 Days
+		$http.get('//api.openweathermap.org/data/2.5/forecast/daily?lat=' + $scope.position.latitude + '&lon=' + $scope.position.longitude + '&units=metric&cnt=4&APPID=f68c6a64ebac04e1d9202b62e626127d')
+		.then(function(response){
+			$scope.forecast = response.data;
+			console.log(response.data);
+		});
+
+	}
+
+	// $http({
+	// 	method: 'GET',
+	// 	url: 'https://api.darksky.net/forecast/2bc28a61c75680417d0d7dadec7ab9d7/-23.5437336,-46.6459546'
+	// }).then(function successCallback(response) {
+
+	// 	$scope.datas = response;
+	// 	console.log($scope.datas);
+
+	// }, function errorCallback(response) {
+
+	// 	console.log(response);
+
+	// });
 
 });
 
@@ -28,7 +64,7 @@ app.filter('miniaturas', function() {
 
 	return function(y){
 
-		var x = y.toLowerCase();
+		var x = angular.lowercase(y);
 
 		if(x === "thunderstorm"){
 			return "thunderstorms";
@@ -83,7 +119,7 @@ app.filter('descricao', function(){
 
 	return function(y){
 
-		var x = y.toLowerCase();
+		var x = angular.lowercase(y);
 
 		if(x === "thunderstorm"){
 			return "Tempestade";
