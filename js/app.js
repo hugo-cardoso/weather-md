@@ -102,29 +102,38 @@ app.filter('miniaturas', function() {
 
 		var x = Number(y);
 
-		if(x === 20 || x === 21 || x === 22 || x === 26){
-			return "cloudy";
+		if(x === 20 || x === 22 || x === 26){ //foggy, haze, cloudy
+			return "cloudy-weather";
 		}
-		if(x === 27 || x === 28 || x === 44){
-			return "cloudy_s_sunny";
+		if(x === 21){ //haze
+			return "haze-weather";
 		}
-		if(x === 43){
-			return "snow_s_rain";
+		if(x === 27){ //mostly cloudy (night)
+			return "mostly-cloudy-night";
 		}
-		if(x === 31 || x === 32 || x === 33 || x === 34 || x === 36){
-			return "sunny";
+		if(x === 28){ //mostly cloudy (day)
+			return "mostly-cloudy-day";
 		}
-		if(x === 29 || x === 30){
-			return "sunny_s_cloudy";
+		if(x === 29){ //partly cloudy (night)
+			return "partly-cloudy-night";
 		}
-		if(x === 3 || x === 4 || x === 37 || x === 38 || x === 39 || x === 45 || x === 47){
-			return "thunderstorms";
+		if(x === 30 || x === 44){ //partly cloudy (day), partly cloudy
+			return "partly-cloudy";
 		}
-		if(x === 43){
-			return "windy";
+		if(x === 31){ //clear (night)
+			return "clear-night";
 		}
-		if(x === 11 || x === 12){
-			return "rain";
+		if(x === 32){ //sunny
+			return "clear";
+		}
+		if(x === 4 || x === 37 || x === 38 || x === 39){ //thunderstorms, isolated thunderstorms, scattered thunderstorms, scattered thunderstorms
+			return "storm-weather";
+		}
+		if(x === 47){ //isolated thundershowers
+			return "thunder-weather";
+		}
+		if(x === 47 || x === 40 || x === 11 || x === 12){ //showers, scattered showers, showers, showers
+			return "rainy-weather";
 		}
 
 	}
