@@ -12,38 +12,38 @@
 </head>
 <body ng-controller="appController">
 
-	<div class="hero animated fadeIn" ng-class="{dia: hora <= 18, noite: hora > 18}">
+	<div class="hero animated fadeIn" ng-class="hero();">
 
 		<div style="height: 100%; width: 100%; display: flex;" ng-hide="datas">
 			
 			<div style="margin: auto; text-align: center;">
-				<div class="md-preloader"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="50" width="50" viewbox="0 0 75 75"><circle cx="37.5" cy="37.5" r="33.5" stroke-width="8"/></svg></div>
-				<p>Carregando...</p>
+				<div class="loader"></div>
+				<p style="font-size: 2em;">Loading...</p>
 			</div>
 
 		</div>
 
-		<div ng-show="datas" class="animated fadeIn" style="height: 100%;">
+		<div ng-show="datas" class="animated fadeInDown" style="height: 100%;">
 
-			<div style="height: 100%; padding-bottom: 50px; width: 100%; display: flex;">
+			<div style="height: 100%; width: 100%; display: flex;">
 
 				<div style="margin: auto; width: 100%; text-align: center;">
-					<p class="data">{{data | date: 'EEE' | semana}}, {{data | date: 'd'}} de {{data | date: 'MMMM' | meses}} de {{data | date: 'yyyy'}}</p>
+					<p class="data">{{data | date: 'EEE'}}, {{data | date: 'MMMM'}} {{data | date: 'd'}}, {{data | date: 'yyyy'}}</p>
 					<h1 class="local">{{datas.location.city}},{{datas.location.region}}</h1>
-					<img ng-src="res/{{datas.weather[0].description | miniaturas}}_128.png">
 					<h1 class="temp">{{datas.item.condition.temp | convertCelsius | limitTo: 2 }}°C</h1>
+					<img style="width: 128px;" ng-src="res/new/{{datas.item.condition.code | miniaturas}}.png">
 					<p>{{datas.item.condition.text}}</p>
 
-					<!-- <div style="height: 50px; position: absolute; bottom: 0px; left: 0px; width: 100%;">
+					<div style="height: 50px; position: absolute; bottom: 0px; left: 0px; width: 100%;">
 						<div class="col-md-6 col-xs-6" style="line-height: 50px; text-align: center; color: #FFF;">
 							<i class="mdi mdi-water"></i>
-							{{datas.main.humidity}}%
+							{{datas.atmosphere.humidity}}%
 						</div>
 						<div class="col-md-6 col-xs-6" style="line-height: 50px; text-align: center; color: #FFF;">
 							<i class="mdi mdi-weather-windy"></i>
-							{{datas.wind.speed}} km/h
+							{{datas.wind.speed | convertKmh | limitTo: 1}} km/h
 						</div>
-					</div> -->
+					</div>
 
 				</div>
 
@@ -53,33 +53,33 @@
 
 	</div>
 
-<!-- 	<div class="container" ng-show="datas">
+	<div class="container" ng-show="datas">
 
-		<div class="col-md-3 col-sm-3 col-xs-12" ng-repeat="data in forecast.list | limitTo: 4">
+		<div class="col-md-3 col-sm-3 col-xs-12" ng-repeat="data in datas.item.forecast | limitTo: 5" ng-if="$index > 0">
 
 			<div class="painel-other animated bounceInLeft" align="center">
 
-				<div class="day">{{data.dt | timestamp | semana}}</div>
+				<div class="day">{{data.day}}</div>
 
-				<img ng-src="res/{{data.weather[0].main | miniaturas}}_96.png">
+				<img style="width: 96px;" ng-src="res/new/{{data.code | miniaturas}}.png">
 
 				<div>
-					<p>{{data.weather[0].main | descricao}}</p>
-					<span style="margin-right: 10px;"><i class="mdi mdi-arrow-up-bold" style="color: #03A9F4;"></i><strong>{{data.temp.max | limitTo: 2}}</strong> °C</span>
-					<span><i class="mdi mdi-arrow-down-bold" style="color: #F44336;"></i><strong>{{data.temp.min | limitTo: 2}}</strong> °C</span>
+					<p>{{data.text}}</p>
+					<span style="margin-right: 10px;"><i class="mdi mdi-arrow-up-bold" style="color: #03A9F4;"></i><strong>{{data.high | convertCelsius | limitTo: 2}}</strong> °C</span>
+					<span><i class="mdi mdi-arrow-down-bold" style="color: #F44336;"></i><strong>{{data.low | convertCelsius | limitTo: 2}}</strong> °C</span>
 				</div>
 
 			</div>
 
 		</div>
 
-	</div> -->
+	</div>
 
 	<div style="text-align: center; color: grey; margin-bottom: 15px;">
 		<span>Developed by </span><a href="https://www.facebook.com/Hugo.Rafael.MC" target="_new">Hugo Cardoso</a>
 	</div>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.0/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
 	<script src="js/app.js"></script>
 </body>
 </html>
