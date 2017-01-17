@@ -19,27 +19,20 @@ body{
 }
 
 .dia{
-	background: -webkit-linear-gradient(top,  rgba(129,212,250,1) 0%,rgba(3,155,229,1) 100%);
-	background: linear-gradient(to bottom,  rgba(129,212,250,1) 0%,rgba(3,155,229,1) 100%);
-	background-size: 100% 400%;
-	-webkit-animation: GradientAnimation 15s ease infinite;
-	animation: GradientAnimation 15s ease infinite;
+	background: #00c6ff; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to bottom, #00c6ff , #0072ff); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to bottom, #00c6ff , #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .noite{
-	background: -webkit-linear-gradient(top,  #434343 0%,#000000 100%);
-	background: linear-gradient(to bottom,  #434343 0%,#000000 100%);
-	background-size: 100% 400%;
-	-webkit-animation: GradientAnimation 15s ease infinite;
-	animation: GradientAnimation 15s ease infinite;
+	background: -webkit-linear-gradient(top,  #141E30 0%,#000000 100%);
+	background: linear-gradient(to top,  #141E30 0%,#000000 100%);
 }
 
 .anoitecendo{
-	background: -webkit-linear-gradient(top,  #517fa4 0%,#243949 100%);
-	background: linear-gradient(to bottom,  #517fa4 0%,#243949 100%);
-	background-size: 100% 400%;
-	-webkit-animation: GradientAnimation 15s ease infinite;
-	animation: GradientAnimation 15s ease infinite;
+	background: #141E30; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to bottom, #141E30 , #243B55); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to bottom, #141E30 , #243B55); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 h1, h2, h3{
@@ -73,10 +66,10 @@ h1, h2, h3{
 	font-size: 1.5rem;
 }
 .hero .local{
-	font-size: 5rem;
+	font-size: 3rem;
 }
 .hero .temp{
-	font-size: 10rem;
+	font-size: 7.5rem;
 }
 
 @media screen and (min-width: 480px) {
