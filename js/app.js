@@ -17,15 +17,12 @@ app.controller('appController', function($scope, $http, $filter, $rootScope) {
 			}, function(error){
 				switch(error.code) {
 					case error.PERMISSION_DENIED:
-					console.log("User denied the request for Geolocation.");
-					$scope.loadingMsg = "You denied the request for Geolocation.";
+					$scope.loadingMsg = "Sorry. \n Is GPS connected?";
 					break;
 					case error.POSITION_UNAVAILABLE:
-					console.log("I could not get his location. Is GPS connected?");
 					$scope.loadingMsg = "I could not get his location. Is GPS connected?";
 					break;
 					case error.TIMEOUT:
-					console.log("The request to get location timed out.");
 					$scope.loadingMsg = "The request to get location timed out.";
 					break;
 					case error.UNKNOWN_ERROR:
