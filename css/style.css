@@ -29,12 +29,21 @@ body{
 }
 
 .noite{
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1565c0+0,1565c0+32,1565c0+47,0d47a1+100 */
-	background: rgb(21,101,192); /* Old browsers */
-	background: -moz-linear-gradient(top,  rgba(3,155,229,1) 0%,, rgba(13,71,161,1) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top,  rgba(3,155,229,1) 0%,rgba(13,71,161,1) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom,  rgba(3,155,229,1) 0%,rgba(13,71,161,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1565c0', endColorstr='#0d47a1',GradientType=0 ); /* IE6-9 */
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#424242+0,212121+100 */
+	background: #424242; /* Old browsers */
+	background: -moz-linear-gradient(top,  #424242 0%, #212121 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #424242 0%,#212121 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #424242 0%,#212121 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#424242', endColorstr='#212121',GradientType=0 ); /* IE6-9 */
+}
+
+.anoitecendo{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#263238+0,212121+100 */
+	background: #263238; /* Old browsers */
+	background: -moz-linear-gradient(top,  #263238 0%, #212121 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #263238 0%,#212121 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #263238 0%,#212121 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#263238', endColorstr='#212121',GradientType=0 ); /* IE6-9 */
 
 }
 
@@ -66,14 +75,14 @@ h1, h2, h3{
 }
 
 .hero .data{
-		font-size: 1.5rem;
-	}
-	.hero .local{
-		font-size: 5rem;
-	}
-	.hero .temp{
-		font-size: 10rem;
-	}
+	font-size: 1.5rem;
+}
+.hero .local{
+	font-size: 5rem;
+}
+.hero .temp{
+	font-size: 10rem;
+}
 
 @media screen and (min-width: 480px) {
 	
@@ -86,4 +95,71 @@ h1, h2, h3{
 	}                           
 }
 
-.md-preloader{font-size:0;display:inline-block;-webkit-animation:outer 6600ms linear infinite;animation:outer 6600ms linear infinite}.md-preloader svg{-webkit-animation:inner 1320ms linear infinite;animation:inner 1320ms linear infinite}.md-preloader svg circle{fill:none;stroke:#FFF;stroke-linecap:square;-webkit-animation:arc 1320ms cubic-bezier(.8, 0, .4, .8) infinite;animation:arc 1320ms cubic-bezier(.8, 0, .4, .8) infinite}@-webkit-keyframes outer{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes outer{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes inner{0%{-webkit-transform:rotate(-100.8deg);transform:rotate(-100.8deg)}100%{-webkit-transform:rotate(0);transform:rotate(0)}}@keyframes inner{0%{-webkit-transform:rotate(-100.8deg);transform:rotate(-100.8deg)}100%{-webkit-transform:rotate(0);transform:rotate(0)}}@-webkit-keyframes arc{0%{stroke-dasharray:1 210.48670779px;stroke-dashoffset:0}40%{stroke-dasharray:151.55042961px,210.48670779px;stroke-dashoffset:0}100%{stroke-dasharray:1 210.48670779px;stroke-dashoffset:-151.55042961px}}@keyframes arc{0%{stroke-dasharray:1 210.48670779px;stroke-dashoffset:0}40%{stroke-dasharray:151.55042961px,210.48670779px;stroke-dashoffset:0}100%{stroke-dasharray:1 210.48670779px;stroke-dashoffset:-151.55042961px}}
+.loader {
+	color: #ffffff;
+	font-size: 90px;
+	text-indent: -9999em;
+	overflow: hidden;
+	width: 1em;
+	height: 1em;
+	border-radius: 50%;
+	margin: 72px auto;
+	position: relative;
+	-webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-animation: load6 1.7s infinite ease;
+	animation: load6 1.7s infinite ease;
+}
+@-webkit-keyframes load6 {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+		box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+	}
+	5%,
+	95% {
+		box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+	}
+	10%,
+	59% {
+		box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+	}
+	20% {
+		box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+	}
+	38% {
+		box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+		box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+	}
+}
+@keyframes load6 {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+		box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+	}
+	5%,
+	95% {
+		box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+	}
+	10%,
+	59% {
+		box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+	}
+	20% {
+		box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+	}
+	38% {
+		box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+		box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+	}
+}
