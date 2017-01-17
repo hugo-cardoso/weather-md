@@ -8,7 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css">
 	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<title>Weather SP</title>
+	<title>HCWeather</title>
+	<meta name="description" content="Here is a description of the applicable page">
 </head>
 <body ng-controller="appController">
 
@@ -18,7 +19,7 @@
 			
 			<div style="margin: auto; text-align: center;">
 				<div class="loader"></div>
-				<p style="font-size: 2em;">Loading...</p>
+				<p style="font-size: 2em;">{{loadingMsg}}</p>
 			</div>
 
 		</div>
@@ -46,7 +47,7 @@
 						</div>
 						<div class="col-md-4 col-xs-4" style="line-height: 50px; text-align: center; color: #FFF;">
 							<i class="mdi mdi-weather-windy"></i>
-							{{datas.wind.speed | convertKmh | limitTo: 1}} km/h
+							{{datas.wind.speed | convertKmh | number: 2}} km/h
 						</div>
 					</div>
 
