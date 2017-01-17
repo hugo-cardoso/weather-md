@@ -35,11 +35,16 @@
 					<p>{{datas.item.condition.text}}</p>
 
 					<div style="height: 50px; position: absolute; bottom: 0px; left: 0px; width: 100%;">
-						<div class="col-md-6 col-xs-6" style="line-height: 50px; text-align: center; color: #FFF;">
+						<div class="col-md-4 col-xs-4" style="line-height: 50px; text-align: center; color: #FFF;">
 							<i class="mdi mdi-water"></i>
 							{{datas.atmosphere.humidity}}%
 						</div>
-						<div class="col-md-6 col-xs-6" style="line-height: 50px; text-align: center; color: #FFF;">
+						<div class="col-md-4 col-xs-4" style="line-height: 50px; text-align: center; color: #FFF;">
+							<i class="mdi mdi-arrow-up-bold"></i>
+							{{datas.item.forecast[0].high | convertCelsius}} °C  <i class="mdi mdi-arrow-down-bold"></i>
+							{{datas.item.forecast[0].low | convertCelsius}} °C
+						</div>
+						<div class="col-md-4 col-xs-4" style="line-height: 50px; text-align: center; color: #FFF;">
 							<i class="mdi mdi-weather-windy"></i>
 							{{datas.wind.speed | convertKmh | limitTo: 1}} km/h
 						</div>
