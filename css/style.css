@@ -22,24 +22,24 @@ body{
 	background: -webkit-linear-gradient(top,  rgba(129,212,250,1) 0%,rgba(3,155,229,1) 100%);
 	background: linear-gradient(to bottom,  rgba(129,212,250,1) 0%,rgba(3,155,229,1) 100%);
 	background-size: 100% 400%;
-	-webkit-animation: GradientAnimation 6s ease infinite;
-	animation: GradientAnimation 6s ease infinite;
+	-webkit-animation: GradientAnimation 15s ease infinite;
+	animation: GradientAnimation 15s ease infinite;
 }
 
 .noite{
 	background: -webkit-linear-gradient(top,  #434343 0%,#000000 100%);
 	background: linear-gradient(to bottom,  #434343 0%,#000000 100%);
 	background-size: 100% 400%;
-	-webkit-animation: GradientAnimation 6s ease infinite;
-	animation: GradientAnimation 6s ease infinite;
+	-webkit-animation: GradientAnimation 15s ease infinite;
+	animation: GradientAnimation 15s ease infinite;
 }
 
 .anoitecendo{
 	background: -webkit-linear-gradient(top,  #517fa4 0%,#243949 100%);
 	background: linear-gradient(to bottom,  #517fa4 0%,#243949 100%);
 	background-size: 100% 400%;
-	-webkit-animation: GradientAnimation 6s ease infinite;
-	animation: GradientAnimation 6s ease infinite;
+	-webkit-animation: GradientAnimation 15s ease infinite;
+	animation: GradientAnimation 15s ease infinite;
 }
 
 h1, h2, h3{
