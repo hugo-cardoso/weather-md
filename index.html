@@ -30,11 +30,15 @@
 			<div style="height: 100%; width: 100%; display: flex;">
 
 				<div style="margin: auto; width: 100%; text-align: center;">
-					<p class="data">{{data | date: 'EEE'}}, {{data | date: 'MMMM'}} {{data | date: 'd'}}, {{data | date: 'yyyy'}}</p>
-					<h1 class="local">{{datas.location.city}},{{datas.location.region}}</h1>
-					<h1 class="temp">{{datas.item.condition.temp | convertCelsius | limitTo: 2 }}°C</h1>
-					<img style="width: 128px;" ng-src="res/new/{{datas.item.condition.code | miniaturas}}.png">
+
+					<div style="position: absolute; top: 0px; left: 0px; width: 100%;">
+						<p style="padding-top: 10px;" class="data">{{data | date: 'EEE'}}, {{data | date: 'MMMM'}} {{data | date: 'd'}}, {{data | date: 'yyyy'}}</p>
+						<h1 class="local">{{datas.location.city}},{{datas.location.region}}</h1>
+					</div>
+
 					<p>{{datas.item.condition.text}}</p>
+					<img class="animated fadeIn" style="width: 128px;" ng-src="res/new/{{datas.item.condition.code | miniaturas}}.png">
+					<h1 class="temp">{{datas.item.condition.temp | convertCelsius | limitTo: 2 }}°C</h1>
 
 					<div style="height: 50px; position: absolute; bottom: 0px; left: 0px; width: 100%;">
 						<div class="col-md-4 col-xs-4" style="line-height: 50px; text-align: center; color: #FFF;">
