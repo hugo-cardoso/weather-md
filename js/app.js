@@ -20,8 +20,13 @@ app.controller('appController', function($scope, $http, $filter, $rootScope) {
 
 	}
 
-	var tryn = 1;
+	$scope.initial = function(){
+		
+		tryn = 1;
+		$scope.loadingMsg = "Loading...";
 
+	}
+	
 	$scope.getData = function(){
 
 		if(tryn <= 2){
@@ -95,7 +100,7 @@ app.filter('miniaturas', function() {
 		if(x === 43){
 			return "windy";
 		}
-		if(x === 11){
+		if(x === 11 || x === 12){
 			return "rain";
 		}
 
