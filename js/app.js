@@ -6,24 +6,48 @@ app.controller('appController', function($scope, $http, $filter, $rootScope) {
 	$scope.data = new Date();
 	$scope.hora = $filter('date')(data, "H");
 
-	if (navigator.geolocation) {
+	$scope.getLocation = function(){
 
-		navigator.geolocation.getCurrentPosition(function(position){
-			$scope.position = position.coords;
-			console.log(position.coords);
-			$scope.getData();
-		});
+		if (navigator.geolocation) {
 
-	} else {
+			navigator.geolocation.getCurrentPosition(function(position){
+				$scope.position = position.coords;
+				console.log(position.coords);
+				$scope.getData();
+			}, function(error){
+				switch(error.code) {
+					case error.PERMISSION_DENIED:
+					console.log("User denied the request for Geolocation.");
+					$scope.loadingMsg = "You denied the request for Geolocation.";
+					break;
+					case error.POSITION_UNAVAILABLE:
+					console.log("I could not get his location. Is GPS connected?");
+					$scope.loadingMsg = "I could not get his location. Is GPS connected?";
+					break;
+					case error.TIMEOUT:
+					console.log("The request to get location timed out.");
+					$scope.loadingMsg = "The request to get location timed out.";
+					break;
+					case error.UNKNOWN_ERROR:
+					console.log("An unknown error occurred.");
+					break;
+				}
+				$scope.$apply();
+			});
 
-		alert("Geolocation is not supported by this browser.");
+		} else {
+
+			alert("Geolocation is not supported by this browser.");
+
+		}
 
 	}
 
 	$scope.initial = function(){
 		
-		tryn = 1;
 		$scope.loadingMsg = "Loading...";
+		$scope.getLocation();
+		tryn = 1;
 
 	}
 	
@@ -41,16 +65,18 @@ app.controller('appController', function($scope, $http, $filter, $rootScope) {
 
 			if(!response.data.query.results){
 				console.log(response.data.query.results);
+				tryn = tryn++;
+				console.log(tryn + " attempts.");
 				$scope.getData();
 			}else{
 				$scope.datas = response.data.query.results.channel;
 				console.log(response.data.query.results.channel);
 			}
-			console.log(tryn + " attempts.");
 
 		}, function errorCallback(response) {
 
 			console.log(response);
+			$scope.getData();
 
 		});
 
