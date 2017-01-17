@@ -29,12 +29,12 @@
 
 				<div style="margin: auto; width: 100%; text-align: center;">
 					<p class="data">{{data | date: 'EEE' | semana}}, {{data | date: 'd'}} de {{data | date: 'MMMM' | meses}} de {{data | date: 'yyyy'}}</p>
-					<h1 class="local">{{datas.name}}</h1>
+					<h1 class="local">{{datas.location.city}},{{datas.location.region}}</h1>
 					<img ng-src="res/{{datas.weather[0].description | miniaturas}}_128.png">
-					<h1 class="temp">{{datas.main.temp | limitTo: 2 }}°C</h1>
-					<p>{{datas.weather[0].description | descricao}}</p>
+					<h1 class="temp">{{datas.item.condition.temp | convertCelsius | limitTo: 2 }}°C</h1>
+					<p>{{datas.item.condition.text}}</p>
 
-					<div style="height: 50px; position: absolute; bottom: 0px; left: 0px; width: 100%;">
+					<!-- <div style="height: 50px; position: absolute; bottom: 0px; left: 0px; width: 100%;">
 						<div class="col-md-6 col-xs-6" style="line-height: 50px; text-align: center; color: #FFF;">
 							<i class="mdi mdi-water"></i>
 							{{datas.main.humidity}}%
@@ -43,7 +43,7 @@
 							<i class="mdi mdi-weather-windy"></i>
 							{{datas.wind.speed}} km/h
 						</div>
-					</div>
+					</div> -->
 
 				</div>
 
@@ -53,7 +53,7 @@
 
 	</div>
 
-	<div class="container" ng-show="datas">
+<!-- 	<div class="container" ng-show="datas">
 
 		<div class="col-md-3 col-sm-3 col-xs-12" ng-repeat="data in forecast.list | limitTo: 4">
 
@@ -73,7 +73,7 @@
 
 		</div>
 
-	</div>
+	</div> -->
 
 	<div style="text-align: center; color: grey; margin-bottom: 15px;">
 		<span>Developed by </span><a href="https://www.facebook.com/Hugo.Rafael.MC" target="_new">Hugo Cardoso</a>

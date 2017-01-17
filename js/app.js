@@ -22,11 +22,11 @@ app.controller('appController', function($scope, $http, $filter, $rootScope) {
 		// Atual
 		$http({
 			method: 'GET',
-			url: 'http://api.openweathermap.org/data/2.5/weather?lat=' + $scope.position.latitude + '&lon=' + $scope.position.longitude + '&units=metric&APPID=f68c6a64ebac04e1d9202b62e626127d'
+			url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(SELECT%20woeid%20FROM%20geo.places%20WHERE%20text%3D%22(' + $scope.position.latitude + '%2C' + $scope.position.longitude + ')%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
 		}).then(function successCallback(response) {
 
-			$scope.datas = response.data;
-			console.log(response.data);
+			$scope.datas = response.data.query.results.channel;
+			console.log(response.data.query.results.channel);
 
 		}, function errorCallback(response) {
 
@@ -34,28 +34,7 @@ app.controller('appController', function($scope, $http, $filter, $rootScope) {
 
 		});
 
-		// 5 Days
-		$http.get('//api.openweathermap.org/data/2.5/forecast/daily?lat=' + $scope.position.latitude + '&lon=' + $scope.position.longitude + '&units=metric&cnt=4&APPID=f68c6a64ebac04e1d9202b62e626127d')
-		.then(function(response){
-			$scope.forecast = response.data;
-			console.log(response.data);
-		});
-
 	}
-
-	// $http({
-	// 	method: 'GET',
-	// 	url: 'https://api.darksky.net/forecast/2bc28a61c75680417d0d7dadec7ab9d7/-23.5437336,-46.6459546'
-	// }).then(function successCallback(response) {
-
-	// 	$scope.datas = response;
-	// 	console.log($scope.datas);
-
-	// }, function errorCallback(response) {
-
-	// 	console.log(response);
-
-	// });
 
 });
 
@@ -197,6 +176,16 @@ app.filter('timestamp', function(){
 		var semana = days[date.getDay()].substring(0,3);
 
 		return semana;
+
+	}
+
+});
+
+app.filter('convertCelsius', function(){
+
+	return function(x){
+
+		return Math.round((x - 32) / (9 / 5));
 
 	}
 
