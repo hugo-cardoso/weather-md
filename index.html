@@ -53,7 +53,7 @@
 
 				</div>
 
-				<div style="height: 50px; position: absolute; bottom: 0px; left: 0px; width: 100%;">
+				<div style="height: 50px; position: absolute; bottom: 0px; left: 0px; width: 100%;" ng-click="toForecast();">
 					<div class="col-md-12 col-xs-12" style="line-height: 50px; text-align: center; color: #FFF;">
 						<i style="font-size: 25px;" class="mdi mdi-chevron-down"></i>
 					</div>
@@ -65,7 +65,7 @@
 
 	</div>
 
-	<div class="container" ng-show="datas">
+	<div class="container" style="padding-top: 15px;" ng-show="datas" id="my-element-3">
 
 		<div class="col-md-3 col-sm-3 col-xs-12" ng-repeat="data in datas.item.forecast | limitTo: 5" ng-if="$index > 0">
 
@@ -92,6 +92,7 @@
 	</div>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+	<script src="js/angular-smooth-scroll.js"></script>
 	<script src="js/app.js"></script>
 </body>
 </html>
