@@ -1,6 +1,6 @@
-var app = angular.module('app', []);
+var app = angular.module('app', ['smoothScroll']);
 
-app.controller('appController', function($scope, $http, $filter, $rootScope) {
+app.controller('appController', function($scope, $http, $filter, $rootScope, $window, smoothScroll) {
 
 	var data = new Date();
 	$scope.data = new Date();
@@ -90,6 +90,17 @@ app.controller('appController', function($scope, $http, $filter, $rootScope) {
 		else{
 			return 'anoitecendo';
 		}
+
+	}
+
+	$scope.toForecast = function(){
+
+		// var y = window.innerHeight;
+
+		// $window.scrollTo(0, y);
+
+		var element = document.getElementById('my-element-3');
+		smoothScroll(element);
 
 	}
 
