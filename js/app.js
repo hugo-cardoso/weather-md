@@ -2,52 +2,6 @@ var app = angular.module('app', ['smoothScroll']);
 
 app.controller('appController', function($scope, $http, $filter, $rootScope, $window, smoothScroll) {
 
-	var data = new Date();
-	$scope.data = new Date();
-	$scope.hora = $filter('date')(data, "H");
-
-	$scope.getLocation = function(){
-
-		if (navigator.geolocation) {
-
-			navigator.geolocation.getCurrentPosition(function(position){
-				$scope.position = position.coords;
-				console.log(position.coords);
-				$scope.getData();
-			}, function(error){
-				switch(error.code) {
-					case error.PERMISSION_DENIED:
-					$scope.loadingMsg = "Sorry. \n Is GPS connected?";
-					break;
-					case error.POSITION_UNAVAILABLE:
-					$scope.loadingMsg = "I could not get his location. Is GPS connected?";
-					break;
-					case error.TIMEOUT:
-					$scope.loadingMsg = "The request to get location timed out.";
-					break;
-					case error.UNKNOWN_ERROR:
-					console.log("An unknown error occurred.");
-					break;
-				}
-				$scope.$apply();
-			});
-
-		} else {
-
-			alert("Geolocation is not supported by this browser.");
-
-		}
-
-	}
-
-	$scope.initial = function(){
-		
-		$scope.loadingMsg = "Loading...";
-		$scope.getLocation();
-		tryn = 1;
-
-	}
-	
 	$scope.getData = function(){
 
 		if(tryn <= 2){
@@ -78,6 +32,72 @@ app.controller('appController', function($scope, $http, $filter, $rootScope, $wi
 		});
 
 	}
+
+	var width = $window.innerWidth;
+	
+
+	$scope.resolution = function(){
+		if(width <= 767){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	if(width <= 767){
+
+		var data = new Date();
+		$scope.data = new Date();
+		$scope.hora = $filter('date')(data, "H");
+
+		$scope.getLocation = function(){
+
+			if (navigator.geolocation) {
+
+				navigator.geolocation.getCurrentPosition(function(position){
+					$scope.position = position.coords;
+					console.log(position.coords);
+					$scope.getData();
+				}, function(error){
+					switch(error.code) {
+						case error.PERMISSION_DENIED:
+						$scope.loadingMsg = "Sorry. \n Is GPS connected?";
+						break;
+						case error.POSITION_UNAVAILABLE:
+						$scope.loadingMsg = "I could not get his location. Is GPS connected?";
+						break;
+						case error.TIMEOUT:
+						$scope.loadingMsg = "The request to get location timed out.";
+						break;
+						case error.UNKNOWN_ERROR:
+						console.log("An unknown error occurred.");
+						break;
+					}
+					$scope.$apply();
+				});
+
+			} else {
+
+				alert("Geolocation is not supported by this browser.");
+
+			}
+
+		}
+
+		$scope.initial = function(){
+
+			$scope.loadingMsg = "Loading...";
+			$scope.getLocation();
+			tryn = 1;
+
+		}
+
+		$scope.initial();
+
+	}else{
+		console.log("Desktop")
+	}
+
 
 	$scope.hero = function(){
 
@@ -128,7 +148,7 @@ app.filter('miniaturas', function() {
 		if(x === 29){ //partly cloudy (night)
 			return "partly-cloudy-night";
 		}
-		if(x === 30 || x === 44){ //partly cloudy (day), partly cloudy
+		if(x === 30 || x === 44 || x === 33){ //partly cloudy (day), partly cloudy
 			return "partly-cloudy";
 		}
 		if(x === 31){ //clear (night)

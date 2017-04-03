@@ -19,51 +19,62 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
-<body ng-controller="appController" ng-init="initial();">
+<body ng-controller="appController">
 
+	<div ng-show="!resolution()" style="display: flex; height: calc(100vh - 50px)">
 
-	<div style="display: flex; position: relative;" class="hero animated fadeIn" ng-class="hero()">
-		
-		<!-- Loading -->
-		<div class="content" style="display: block;" ng-show="!datas">
-			<h3 class="big-text" ng-bind="loadingMsg"></h3>
-		</div>
-
-		<!-- Weather -->
-		<div class="content" ng-hide="!datas" class="animated fadeIn">
-			<img style="width: 96px;" ng-src="res/{{datas.item.condition.code | miniaturas}}.png">
-			<h1 class="big-text">
-				<span ng-bind="datas.item.condition.temp | convertCelsius | limitTo: 2"></span>° C
-			</h1>
-		</div>
-
-		<div class="share">
-			<a href='whatsapp://send?text={{datas.item.condition.temp | convertCelsius | limitTo: 2}}' class="btn-o">SHARE</a>
-		</div>
-
-		<!-- Arrow to down -->
-		<div style="height: 50px; position: absolute; bottom: 0px; left: 0px; width: 100%;" ng-click="toForecast();">
-			<div class="col-md-12 col-xs-12" style="line-height: 50px; text-align: center; color: #FFF; opacity: 0.5;">
-				<i style="font-size: 20px;" class="mdi mdi-chevron-down"></i>
-			</div>
-		</div>
+		<p style="margin: auto;">Mobile only.</p>
 
 	</div>
 
-	<div class="container" style="padding-top: 15px;" ng-show="datas" id="my-element-3">
+	<div ng-show="resolution()">
 
-		<div class="col-md-3 col-sm-3 col-xs-12" ng-repeat="data in datas.item.forecast | limitTo: 5" ng-if="$index > 0">
+		<div style="display: flex; position: relative;" class="hero animated fadeIn" ng-class="hero()">
 
-			<div class="painel-other animated bounceInLeft" align="center">
+			<!-- Loading -->
+			<div class="content" style="display: block;" ng-show="!datas">
+				<h3 class="big-text" ng-bind="loadingMsg"></h3>
+			</div>
 
-				<div class="day" ng-bind="data.day"></div>
+			<!-- Weather -->
+			<div class="content" ng-hide="!datas" class="animated fadeIn">
+				<img style="width: 96px;" ng-src="res/{{datas.item.condition.code | miniaturas}}.png">
+				<h1 class="big-text">
+					<span ng-bind="datas.item.condition.temp | convertCelsius | limitTo: 2"></span>° C
+				</h1>
+				<span style="color: #FFFFFF;" ng-bind="datas.item.condition.text"></span>
+			</div>
 
-				<img style="width: 50px;" ng-src="res/{{data.code | miniaturas}}.png">
+			<!-- Share button -->
+<!-- 			<div class="share visible-xs">
+				<a href='whatsapp://send?text={{datas.item.condition.temp | convertCelsius | limitTo: 2}}' class="btn-o">SHARE</a>
+			</div> -->
 
-				<div>
-					<p ng-bind="data.text"></p>
-					<span style="margin-right: 10px;"><i class="mdi mdi-arrow-up-bold" style="color: #03A9F4;"></i><strong ng-bind="data.high | convertCelsius | limitTo: 2"></strong> °C</span>
-					<span><i class="mdi mdi-arrow-down-bold" style="color: #F44336;"></i><strong ng-bind="data.low | convertCelsius | limitTo: 2"></strong> °C</span>
+			<!-- Arrow to down -->
+			<div class="visible-xs" style="height: 50px; position: absolute; bottom: 0px; left: 0px; width: 100%;" ng-click="toForecast();">
+				<div class="col-md-12 col-xs-12" style="line-height: 50px; text-align: center; color: #FFF; opacity: 0.5;">
+					<i style="font-size: 20px;" class="mdi mdi-chevron-down"></i>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="container" style="padding-top: 15px;" ng-show="datas" id="my-element-3">
+
+			<div class="col-md-3 col-sm-3 col-xs-12" ng-repeat="data in datas.item.forecast | limitTo: 5" ng-if="$index > 0">
+
+				<div class="painel-other animated bounceInLeft" align="center">
+
+					<div class="day" ng-bind="data.day"></div>
+
+					<img style="width: 50px;" ng-src="res/{{data.code | miniaturas}}.png">
+
+					<div>
+						<p ng-bind="data.text"></p>
+						<span style="margin-right: 10px;"><i class="mdi mdi-arrow-up-bold" style="color: #03A9F4;"></i><strong ng-bind="data.high | convertCelsius | limitTo: 2"></strong> °C</span>
+						<span><i class="mdi mdi-arrow-down-bold" style="color: #F44336;"></i><strong ng-bind="data.low | convertCelsius | limitTo: 2"></strong>°C</span>
+					</div>
+
 				</div>
 
 			</div>
@@ -72,7 +83,7 @@
 
 	</div>
 
-	<div style="text-align: center; color: grey; margin-bottom: 15px; padding: 15px 0px;">
+	<div style="text-align: center; color: grey; padding: 15px 0px;">
 		<span>Developed by </span><a href="https://www.facebook.com/Hugo.Rafael.MC" target="_new">Hugo Cardoso</a>
 	</div>
 
