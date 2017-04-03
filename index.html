@@ -33,7 +33,7 @@
 		<div class="content" ng-hide="!datas" class="animated fadeIn">
 			<img style="width: 96px;" ng-src="res/{{datas.item.condition.code | miniaturas}}.png">
 			<h1 class="big-text">
-				<span ng-bind="datas.item.condition.temp"></span>° C
+				<span ng-bind="datas.item.condition.temp | convertCelsius | limitTo: 2"></span>° C
 			</h1>
 		</div>
 
