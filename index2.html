@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" type="image/png" href="favicon.png"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>HCWeather</title>
+	<meta name="description" content="See the weather forecast in your city. Developed by Hugo Cardoso.">
+</head>
+<body ng-controller="appController" ng-init="initial();">
+
+	<div class="hero animated fadeIn" ng-class="hero();">
+
+		<div style="height: 100%; width: 100%; display: flex;" ng-hide="datas">
+			
+			<div style="margin: auto; text-align: center;">
+				<div class="loader"></div>
+				<p style="font-size: 2em;" ng-bind="loadingMsg"></p>
+			</div>
+
+		</div>
+
+		<div ng-show="datas" class="animated fadeInDown" style="height: 100%;">
+
+			<div style="height: 100%; width: 100%; display: flex;">
+
+				<div style="margin: auto; width: 100%; height: 100%; text-align: center;">
+
+					<div style="position: absolute; top: 0px; left: 0px; width: 100%;">
+						<h1 class="local" style="padding-top: 10px;"><span ng-bind="datas.location.city"></span>,<span ng-bind="datas.location.region"></span></h1>
+					</div>
+
+					<div style="width: 100%; height: 50%; display: flex; float: left;">
+						<div style="margin: auto; margin-bottom: 25px;">
+							<img class="animated fadeIn" style="width: 17rem;" ng-src="res/{{datas.item.condition.code | miniaturas}}.png">
+						</div>
+					</div>
+
+					<div style="width: 49.9999%; float: left; text-align: right; padding-right: 15px;">
+						<h1 class="temp">{{datas.item.condition.temp | convertCelsius | limitTo: 2 }}<span>°C</span></h1>
+						<p><i class="mdi mdi-arrow-up-bold"></i>{{datas.item.forecast[0].high | convertCelsius}} °C  <i class="mdi mdi-arrow-down-bold"></i>{{datas.item.forecast[0].low | convertCelsius}} °C</p>
+					</div>
+					<div style="width: 49.9999%; float: left; text-align: left; padding-left: 15px;">
+						<p style="font-size: 3rem;">{{datas.item.condition.text}}</p>
+						<p><i class="mdi mdi-water" style="margin-right: 15px;"></i>{{datas.atmosphere.humidity}}%</p>
+						<p><i class="mdi mdi-weather-windy" style="margin-right: 15px;"></i>{{datas.wind.speed | convertKmh | number: 2}} km/h</p>
+					</div>
+
+				</div>
+
+				<div style="height: 50px; position: absolute; bottom: 0px; left: 0px; width: 100%;" ng-click="toForecast();">
+					<div class="col-md-12 col-xs-12" style="line-height: 50px; text-align: center; color: #FFF;">
+						<i style="font-size: 25px;" class="mdi mdi-chevron-down"></i>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="container" style="padding-top: 15px;" ng-show="datas" id="my-element-3">
+
+		<div class="col-md-3 col-sm-3 col-xs-12" ng-repeat="data in datas.item.forecast | limitTo: 5" ng-if="$index > 0">
+
+			<div class="painel-other animated bounceInLeft" align="center">
+
+				<div class="day" ng-bind="data.day"></div>
+
+				<img style="width: 96px;" ng-src="res/{{data.code | miniaturas}}.png">
+
+				<div>
+					<p ng-bind="data.text"></p>
+					<span style="margin-right: 10px;"><i class="mdi mdi-arrow-up-bold" style="color: #03A9F4;"></i><strong ng-bind="data.high | convertCelsius | limitTo: 2"></strong> °C</span>
+					<span><i class="mdi mdi-arrow-down-bold" style="color: #F44336;"></i><strong ng-bind="data.low | convertCelsius | limitTo: 2"></strong> °C</span>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div style="text-align: center; color: grey; margin-bottom: 15px;">
+		<span>Developed by </span><a href="https://www.facebook.com/Hugo.Rafael.MC" target="_new">Hugo Cardoso</a>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+	<script src="js/angular-smooth-scroll.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>

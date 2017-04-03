@@ -123,7 +123,7 @@ app.filter('miniaturas', function() {
 			return "mostly-cloudy-night";
 		}
 		if(x === 28){ //mostly cloudy (day)
-			return "mostly-cloudy-day";
+			return "mostly-cloudy";
 		}
 		if(x === 29){ //partly cloudy (night)
 			return "partly-cloudy-night";
