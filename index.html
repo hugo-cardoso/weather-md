@@ -21,13 +21,13 @@
 </head>
 <body ng-controller="appController">
 
-	<div ng-show="!resolution()" style="display: flex; height: calc(100vh - 50px)">
+	<div ng-show="!mobile" style="display: flex; height: calc(100vh - 50px)">
 
 		<p style="margin: auto;">Mobile only.</p>
 
 	</div>
 
-	<div ng-show="resolution()">
+	<div ng-show="mobile">
 
 		<div style="display: flex; position: relative;" class="hero animated fadeIn" ng-class="hero()">
 

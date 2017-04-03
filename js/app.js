@@ -33,18 +33,9 @@ app.controller('appController', function($scope, $http, $filter, $rootScope, $wi
 
 	}
 
-	var width = $window.innerWidth;
-	
+	// Init request API and show Weather
 
-	$scope.resolution = function(){
-		if(width <= 767){
-			return true;
-		}else{
-			return false;
-		}
-	}
-
-	if(width <= 767){
+	$scope.aplication = function(){
 
 		var data = new Date();
 		$scope.data = new Date();
@@ -94,10 +85,18 @@ app.controller('appController', function($scope, $http, $filter, $rootScope, $wi
 
 		$scope.initial();
 
-	}else{
-		console.log("Desktop")
 	}
 
+	// Display Width
+
+	var width = $window.innerWidth;
+
+	if(width <= 767){
+		$scope.mobile = true;
+		$scope.aplication();
+	}else{
+		$scope.mobile = false;
+	}
 
 	$scope.hero = function(){
 
@@ -114,10 +113,6 @@ app.controller('appController', function($scope, $http, $filter, $rootScope, $wi
 	}
 
 	$scope.toForecast = function(){
-
-		// var y = window.innerHeight;
-
-		// $window.scrollTo(0, y);
 
 		var element = document.getElementById('my-element-3');
 		smoothScroll(element);
